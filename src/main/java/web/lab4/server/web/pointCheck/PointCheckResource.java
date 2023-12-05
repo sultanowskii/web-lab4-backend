@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@Path("/api/pointChecks")
+@Path("/api/point-checks")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PointCheckResource {
@@ -74,20 +74,9 @@ public class PointCheckResource {
     @GET
     @Path("/test")
     public Response hello() {
-        List<PointCheck> previousChecks = new ArrayList<>();
-        previousChecks.add(new PointCheck(1, 2, 3, false));
-        previousChecks.add(new PointCheck(4, 5, 6, true));
-        previousChecks.add(new PointCheck(420, 1337, 777, true));
         return Response
                 .status(Response.Status.OK)
-                .entity(Json.createArrayBuilder(
-                                previousChecks
-                                .stream()
-                                .map(PointCheck::toJSONObject)
-                                .toList()
-                        )
-                        .build()
-                )
+                .entity("cool!")
                 .build();
     }
 
