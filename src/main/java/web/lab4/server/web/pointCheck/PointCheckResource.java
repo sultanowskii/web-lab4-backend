@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@Path("/api/checks")
+@Path("/api/pointChecks")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PointCheckResource {
@@ -36,7 +36,7 @@ public class PointCheckResource {
     private UserService userService;
 
     @POST
-    @Path("/check")
+    @Path("/")
     @AuthRequired
     public Response check(@Context HttpHeaders headers, @NotNull(message="Credentials are required") @Valid Point point) {
         var user = getUserFromToken(headers);
@@ -48,7 +48,7 @@ public class PointCheckResource {
     }
 
     @GET
-    @Path("/previousChecks")
+    @Path("/")
     @AuthRequired
     public Response getPreviousChecks(@Context HttpHeaders headers) {
         var user = getUserFromToken(headers);

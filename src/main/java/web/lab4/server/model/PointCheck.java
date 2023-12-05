@@ -109,6 +109,7 @@ public class PointCheck {
             .add("y", y)
             .add("r", r)
             .add("isHit", isHit)
+            .add("createdAt", createdAt.getTime())
             .build();
     }
 }

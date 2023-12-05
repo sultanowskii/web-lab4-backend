@@ -63,6 +63,15 @@ public class AuthResource {
                 .build();
     }
 
+    @POST
+    @Path("/check-token")
+    @AuthRequired
+    public Response checkToken() {
+        return Response
+            .status(Response.Status.OK)
+            .build();
+    }
+
     private String tokenToJSON(String token) {
         return Json.createObjectBuilder().add("token", token).build().toString();
     }
