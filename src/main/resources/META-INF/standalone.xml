@@ -1,0 +1,4 @@
+<driver name="postgresql" module="org.postgres">
+    <datasource-class>org.postgresql.Driver</datasource-class>
+    <xa-datasource-class>org.postgresql.Driver</xa-datasource-class>
+</driver>
