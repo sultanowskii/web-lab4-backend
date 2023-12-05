@@ -1,7 +1,7 @@
-package web.lab4.server.controller;
+package web.lab4.server.web.pointCheck;
 
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import web.lab4.server.model.PointCheck;
@@ -12,15 +12,16 @@ import java.util.List;
 
 @Stateless
 @Path("/api/checks")
-public class PointCheckController {
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+public class PointCheckResource {
 
-    @Inject
+    @EJB
     private PointCheckService pointCheckService;
 
     // TODO: проверка на авторизацию
     @POST
     @Path("/check")
-    @Produces(MediaType.APPLICATION_JSON)
     public boolean check(@QueryParam("X") double x, @QueryParam("Y") double y, @QueryParam("R") double r) {
         // TODO: получить пользователя из сессии
         User user = null;
@@ -32,7 +33,6 @@ public class PointCheckController {
     // TODO: проверка на авторизацию
     @GET
     @Path("/previousChecks")
-    @Produces(MediaType.APPLICATION_JSON)
     public List<PointCheck> getPreviousChecks() {
         // TODO: получить пользователя из сессии
         User user = null;
@@ -41,7 +41,6 @@ public class PointCheckController {
 
     @GET
     @Path("/hello")
-    @Produces(MediaType.APPLICATION_JSON)
     public String hello() {
         return "{\"hello\": 123}";
     }

@@ -1,5 +1,7 @@
 package web.lab4.server.model;
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -92,5 +94,14 @@ public class PointCheck {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public JsonObject toJSONObject() {
+        return Json.createObjectBuilder()
+            .add("x", x)
+            .add("y", y)
+            .add("r", r)
+            .add("isHit", isHit)
+            .build();
     }
 }
