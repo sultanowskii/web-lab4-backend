@@ -1,4 +1,4 @@
-package web.lab4.server.service;
+package web.lab4.server.service.auth;
 
 public class AuthResult {
     private final String errorMessage;

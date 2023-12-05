@@ -1,4 +1,4 @@
-package web.lab4.server.service;
+package web.lab4.server.service.auth;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -28,7 +28,7 @@ public class JWTService {
                 .compact();
     }
 
-    public String validateAndExtractUsername(String token) {
+    public String getUsernameFromToken(String token) {
         SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
 
         try {

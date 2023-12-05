@@ -13,13 +13,13 @@ public class PointCheck {
     private int id;
 
     @Column(name="x", nullable=false)
-    private double x;
+    private int x;
 
     @Column(name="y", nullable=false)
     private double y;
 
     @Column(name="r", nullable=false)
-    private double r;
+    private int r;
 
     @Column(name="is_hit", nullable=false)
     private boolean isHit;
@@ -34,10 +34,17 @@ public class PointCheck {
 
     }
 
-    public PointCheck(double x, double y, double r) {
+    public PointCheck(int x, double y, int r) {
         this.x = x;
         this.y = y;
         this.r = r;
+    }
+
+    public PointCheck(int x, double y, int r, boolean isHit) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.isHit = isHit;
     }
 
     public int getId() {
@@ -48,11 +55,11 @@ public class PointCheck {
         this.id = id;
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -64,11 +71,11 @@ public class PointCheck {
         this.y = y;
     }
 
-    public double getR() {
+    public int getR() {
         return r;
     }
 
-    public void setR(double r) {
+    public void setR(int r) {
         this.r = r;
     }
 

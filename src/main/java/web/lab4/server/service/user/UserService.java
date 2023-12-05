@@ -1,7 +1,9 @@
-package web.lab4.server.service;
+package web.lab4.server.service.user;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import web.lab4.server.model.User;
 
@@ -24,6 +26,17 @@ public class UserService {
     public void updateUser(User user) {
         entityManager.persist(user);
         entityManager.flush();
+    }
+
+    public User getUserWithUsername(String username) {
+        try {
+            return entityManager.createQuery("SELECT user FROM User user WHERE user.username = :username", User.class)
+                .setParameter("username", username)
+                .getSingleResult();
+        } catch (NoResultException | NonUniqueResultException ignored) {
+
+        }
+        return null;
     }
 
     public boolean isUserWithPasswordExist(String username, String password) {

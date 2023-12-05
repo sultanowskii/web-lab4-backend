@@ -1,4 +1,4 @@
-package web.lab4.server.service;
+package web.lab4.server.service.pointCheck;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -15,12 +15,12 @@ public class PointCheckService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public boolean createPointCheckForUser(double x, double y, double r, User user) {
-        // TODO: лоигка создания
-        // TODO: логика проверки на успех
-        // TODO: мб изменить сигнатуру?
+    public PointCheck createPointCheckForUser(int x, double y, int r, User user) {
         boolean isHit = PointChecker.isPointIsnideArea(x, y, r);
-        return true;
+        var pointCheck = new PointCheck(x, y, r, isHit);
+        entityManager.persist(pointCheck);
+        entityManager.flush();
+        return pointCheck;
     }
 
     public List<PointCheck> getPreviousChecks(User user) {

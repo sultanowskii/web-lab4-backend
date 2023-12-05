@@ -8,8 +8,7 @@ import jakarta.validation.constraints.*;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import web.lab4.server.model.User;
-import web.lab4.server.service.AuthService;
+import web.lab4.server.service.auth.AuthService;
 
 @Stateless
 @Path("/api/auth")
@@ -54,13 +53,14 @@ public class AuthResource {
         }
     }
 
-    // TODO: проверка на авторизацию
     @POST
     @Path("/logout")
+    @AuthRequired
     public Response logout() {
-        // TODO: получить пользователя из сессии
-        authService.logout();
-        return Response.status(Response.Status.OK).build();
+        return Response
+                .status(Response.Status.OK)
+                .entity(tokenToJSON(""))
+                .build();
     }
 
     private String tokenToJSON(String token) {

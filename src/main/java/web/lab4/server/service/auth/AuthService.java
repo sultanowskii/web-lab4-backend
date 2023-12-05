@@ -1,10 +1,9 @@
-package web.lab4.server.service;
+package web.lab4.server.service.auth;
 
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import web.lab4.server.model.User;
+import web.lab4.server.service.user.UserService;
 import web.lab4.server.util.Crypto;
 
 @Stateless
@@ -35,10 +34,5 @@ public class AuthService {
         String token = jwtService.createToken(username);
 
         return AuthResult.success(token);
-    }
-
-    public boolean logout() {
-        // TODO: получить токен и обнулить его???
-        return true;
     }
 }
