@@ -12,13 +12,13 @@ import java.util.Date;
 
 @Stateless
 public class JWTService {
-    private static final String SECRET_KEY = "pancakes";
+    private static final String SECRET_KEY = "unbelievably strong key!!! (fr fr)";
 
     public String createToken(String username) {
         SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
 
         Instant now = Instant.now();
-        Instant expiryDate = now.plus(1, ChronoUnit.WEEKS);
+        Instant expiryDate = now.plus(7, ChronoUnit.DAYS);
 
         return Jwts.builder()
                 .subject(username)

@@ -56,7 +56,7 @@ public class PointCheckResource {
             return Response.status(Response.Status.FORBIDDEN).entity(errorToJSON("You must login first")).build();
         }
 
-        var previousChecks = pointCheckService.getPreviousChecks(null);
+        var previousChecks = pointCheckService.getPreviousChecks(user);
 
         return Response
             .status(Response.Status.OK)

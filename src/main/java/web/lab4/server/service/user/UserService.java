@@ -1,10 +1,8 @@
 package web.lab4.server.service.user;
 
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.NonUniqueResultException;
-import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import web.lab4.server.model.User;
 
 @Stateless
@@ -24,8 +22,10 @@ public class UserService {
     }
 
     public void updateUser(User user) {
+        EntityTransaction tr = entityManager.getTransaction();
+        tr.begin();
         entityManager.persist(user);
-        entityManager.flush();
+        tr.commit();
     }
 
     public User getUserWithUsername(String username) {
