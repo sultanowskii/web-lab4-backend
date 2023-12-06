@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@Path("/api/point-checks")
+@Path("/api/pointChecks")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PointCheckResource {

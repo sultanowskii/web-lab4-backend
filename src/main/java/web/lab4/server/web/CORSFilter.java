@@ -11,8 +11,9 @@ public class CORSFilter implements ContainerResponseFilter {
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) {
         var headers = responseContext.getHeaders();
+        System.out.println("IM ALIVE!!!");
         headers.add("Access-Control-Allow-Origin", "*");
         headers.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-        headers.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+        headers.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Accept");
     }
 }

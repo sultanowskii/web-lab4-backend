@@ -64,7 +64,7 @@ public class AuthResource {
     }
 
     @POST
-    @Path("/check-token")
+    @Path("/checkToken")
     @AuthRequired
     public Response checkToken() {
         return Response
